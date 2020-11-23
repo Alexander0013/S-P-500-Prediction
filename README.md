@@ -1,4 +1,4 @@
-# Title of your final project
+# [GroupID] Title of your final project
 
 ### Groups
 * name, student ID1
@@ -19,7 +19,7 @@ Rscript code/your_script.R --input data/training --output results/performance.ts
 ## Folder organization and its related information
 
 ### docs
-* Your presentation, 1072_datascience_FP_<yourID|groupName>.ppt/pptx/pdf, by **Jun. 25**
+* Your presentation, 1091_datascience_FP_<yourID|groupName>.ppt/pptx/pdf, by **Jan. 12**
 * Any related document for the final project
   * papers
   * software user guide
