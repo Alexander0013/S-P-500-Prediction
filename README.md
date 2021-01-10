@@ -21,7 +21,7 @@ Rscript code/your_script.R --input data/training --output results/performance.ts
 ## Folder organization and its related information
 
 ### docs
-* Your presentation, 1091_datascience_FP_<yourID|groupName>.ppt/pptx/pdf, by **Jan. 12**
+* Your presentation, 1091_datascience_FP_<yourID|groupName>.ppt/pptx/pdf, by **Jan. 12** (待補)
 * Any related document for the final project
   * papers
   * software user guide
@@ -30,22 +30,22 @@ Rscript code/your_script.R --input data/training --output results/performance.ts
 
 * Source : Yahoo Finance
 * Input format : CSV
-* Any preprocessing?
+* Any preprocessing?(待補)
   * Handle missing data
   * Scale value
 
 ### code
 
 * Which method do you use? LSTM
-* What is a null model for comparison?
-* How do your perform evaluation? ie. Cross-validation, or extra separated data
+* What is a null model for comparison? (待補)
+* How do your perform evaluation? ie. Cross-validation, or extra separated data (待補)
 
 ### results
 
 * Which metric do you use 
-  * precision, recall, R-square
-* Is your improvement significant?
-* What is the challenge part of your project?
+  * precision, recall, R-square (待補)
+* Is your improvement significant? (待補)
+* What is the challenge part of your project? (待補)
 
 ## References
 * Code/implementation which you include/reference (__You should indicate in your presentation if you use code for others. Otherwise, cheating will result in 0 score for final project.__)
