@@ -9,6 +9,8 @@
 ### Goal
 A breif introduction about your project, i.e., what is your goal?
 
+透過LSTM的model預測S&P500的指數型基金VFINX的股價走勢，希望能藉此發展出能穩定獲利的交易策略
+
 ### Demo 
 You should provide an example commend to reproduce your result
 ```R
@@ -26,15 +28,15 @@ Rscript code/your_script.R --input data/training --output results/performance.ts
 
 ### data
 
-* Source
-* Input format
+* Source : Yahoo Finance
+* Input format : CSV
 * Any preprocessing?
   * Handle missing data
   * Scale value
 
 ### code
 
-* Which method do you use?
+* Which method do you use? LSTM
 * What is a null model for comparison?
 * How do your perform evaluation? ie. Cross-validation, or extra separated data
 
