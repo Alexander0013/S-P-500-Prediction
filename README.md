@@ -1,4 +1,4 @@
-# [GroupID] Title of your final project
+# [GroupID] S&P500發財模型
 
 ### Groups
 * 袁嵩皓, 107306085
