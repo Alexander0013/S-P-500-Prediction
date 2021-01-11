@@ -21,9 +21,10 @@ while(i < length(args))
   }
   i<-i+1
 }
+
 ## load data ##
 d <- read.csv("Result.csv")
-#d <- read.csv(files)
+# d <- read.csv(files)
 summary(d)
 na_VFINX <- which(is.na(d$VFINX))
 d <- d[-c(na_VFINX),] # drop the na row in VFINX
@@ -33,6 +34,7 @@ d <- na.locf(d) # fill na with the value prior to it
 
 split_time <- "2019-09-30" #the time to split train an test set
 test_index <- which(d$Date == split_time) # index to split in the data set
+date_to_result <- d[,c(1)]
 d <- d[,-c(1)] # drop 'Date' column
 
 ## data processing ##
@@ -60,11 +62,14 @@ scaled_sts <- cbind(last_day, scaled_data$scaledDataSet) # series to surpervise 
 ##  split train and test data set ##
 train <- scaled_sts[1:test_index,]
 test <- scaled_sts[(test_index+1):nrow(scaled_sts),]
+date_to_result <- date_to_result[(test_index+1):nrow(scaled_sts)]
 
 train <- train[-c(1),] # drop 1st row, cuz t-1 are 0
 
-x_train <- as.matrix(train[, 1:(ncol(train)/2)])
-y_train <- as.matrix(train[,((ncol(train)/2)+1)])
+x_train <- as.matrix(train[1:(nrow(train)-240), 1:(ncol(train)/2)])
+x_val <- as.matrix(train[(nrow(train)-239):nrow(train),1:(ncol(train)/2)])
+y_train <- as.matrix(train[1:(nrow(train)-240),((ncol(train)/2)+1)])
+y_val <- as.matrix(train[(nrow(train)-239):nrow(train),1:(ncol(train)/2)])
 
 x_test <- as.matrix(test[,1:(ncol(train)/2)])
 y_test <- as.matrix(test[,((ncol(train)/2)+1)])
@@ -82,10 +87,13 @@ tf$config$experimental$set_memory_growth(device = gpu, enable = TRUE)
 dim_row <- nrow(x_train)
 dim_col <- ncol(x_train)
 dim(x_train) <- c(dim_row, 1, dim_col)
+dim_row_val <- nrow(x_val)
+dim_col_val <- ncol(x_val)
+dim(x_val) <- c(dim_row_val, 1, dim_col_val)
 X_shape2 = dim(x_train)[2]
 X_shape3 = dim(x_train)[3]
-batch_size <-  36
-units <-  17
+batch_size <-  20
+units <-  20
 epochs <- 300
 
 adam <- optimizer_adam(lr = 0.001)
@@ -100,12 +108,21 @@ model%>%
              recurrent_dropout = 0,
              return_sequences = FALSE
              )%>%
-  # layer_lstm(units = 5, stateful= TRUE,return_sequences = FALSE)%>%
+  # layer_lstm(units = 15, 
+  #            stateful= FALSE,
+  #            activation = "tanh",
+  #            recurrent_activation = "sigmoid",
+  #            use_bias = TRUE,
+  #            unroll = FALSE,
+  #            recurrent_dropout = 0,
+  #            return_sequences = FALSE)%>%
   layer_dense(units = 1)
 
+matric = tf$keras$metrics$RootMeanSquaredError()
 model %>% compile(
   loss = 'mean_squared_error',
-  optimizer = adam,  
+  optimizer = adam,
+  metrics = matric
 )
 
 
@@ -116,12 +133,13 @@ history <- model %>% fit(x          = x_train,
                          batch_size = batch_size,
                          epochs     = 100, 
                          verbose    = 1, 
-                         shuffle    = FALSE)
+                         shuffle    = FALSE,
+                         validation_data= list(x_val, y_val))
 
 library(ggplot2)
 #plot training histroy
 
-
+history$metrics
 #reshape test data
 dim_row <- nrow(x_test)
 dim_col <- ncol(x_test)
@@ -143,11 +161,18 @@ y_inverse <- minmaxDescaling(y_test, descaling_para)
 ## plot the result ##
 data_plot1 <- data.frame(y_inverse)
 data_plot2 <- data.frame(yhat_inverse)
-ggplot(data_plot1, aes(x = seq_along(y_test), y = y_test)) +
-        geom_line(color='#56B4E9')+
-        geom_line(data = data_plot2,aes(x=seq_along(yhat), y=yhat),color='red') +
-        theme_grey(base_size = 16) +
-        ggtitle("Prediction") +
-        labs(x = "time index", y = "price")
+plot_out <- ggplot(data_plot1, aes(x = seq_along(y_test), y = y_test)) +
+                    geom_line(color='#56B4E9')+
+                    geom_line(data = data_plot2,aes(x=seq_along(yhat), y=yhat),color='red') +
+                    theme_grey(base_size = 16) +
+                    ggtitle("Prediction") +
+                    labs(x = "time index", y = "price")
+print(plot_out)
 
-       
+result <- as.data.frame(cbind(date_to_result, y_inverse))
+result <- as.data.frame(cbind(result, yhat_inverse))
+colnames(result)[1] <- "Date"
+colnames(result)[2] <- "Actual"
+colnames(result)[3] <- "Prediction"
+
+write.csv(result, file = out_f, quote = FALSE)
