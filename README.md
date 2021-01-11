@@ -31,21 +31,21 @@ Rscript code/your_script.R --input data/training --output results/performance.ts
 * Source : Yahoo Finance
 * Input format : CSV
 * Any preprocessing?(待補)
-  * Handle missing data
-  * Scale value
+  * Handle missing data   假如說股價有missing value就直接drop掉，然後用前一天的資料去補
+  * Scale value  做標準化，把資料縮在0~1之間
 
 ### code
 
 * Which method do you use? LSTM
-* What is a null model for comparison? (待補)
-* How do your perform evaluation? ie. Cross-validation, or extra separated data (待補)
+* What is a null model for comparison? Random Forest
+* How do your perform evaluation? ie. Cross-validation, or extra separated data RMSE/R square/ RSE
 
 ### results
 
 * Which metric do you use 
-  * precision, recall, R-square (待補)
-* Is your improvement significant? (待補)
-* What is the challenge part of your project? (待補)
+  * precision, recall, R-square RMSE/ R square/ RSE
+* Is your improvement significant? 將訓練資料裡面切出validation的資料出來，讓模型做validation。
+* What is the challenge part of your project? 1. 選擇預測模型 2. 找出有效的特徵值 3. 讓模型跑得更準
 
 ## References
 * Code/implementation which you include/reference (__You should indicate in your presentation if you use code for others. Otherwise, cheating will result in 0 score for final project.__)
