@@ -30,7 +30,7 @@ Rscript code/your_script.R --input data/training --output results/performance.ts
 
 * Source : Yahoo Finance
 * Input format : CSV
-* Any preprocessing?(待補)
+* Any preprocessing? 
   * Handle missing data   假如說股價有missing value就直接drop掉，然後用前一天的資料去補
   * Scale value  做標準化，把資料縮在0~1之間
 
