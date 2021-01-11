@@ -1,7 +1,7 @@
 # read parameters
 args = commandArgs(trailingOnly=TRUE)
 if (length(args)==0) {
-  stop("USAGE: Rscript final_project.R --input data/training --output results/performance.tsv", call.=FALSE)
+  stop("USAGE: Rscript final_project.R --input ../data/training --output results/prediction.csv", call.=FALSE)
 }
 
 
@@ -23,8 +23,8 @@ while(i < length(args))
 }
 
 ## load data ##
-d <- read.csv("Result.csv")
-# d <- read.csv(files)
+# d <- read.csv("Result.csv")
+d <- read.csv(files)
 summary(d)
 na_VFINX <- which(is.na(d$VFINX))
 d <- d[-c(na_VFINX),] # drop the na row in VFINX
