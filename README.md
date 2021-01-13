@@ -4,7 +4,7 @@
 * 袁嵩皓, 107306085
 * 梁永強, 105701060
 * 林羿名, 107703007
-* 翁義甫
+* 翁義甫, 107703041
 
 ### Goal
 A breif introduction about your project, i.e., what is your goal?
