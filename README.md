@@ -1,10 +1,7 @@
-# [GroupID] S&P500發財模型
+# [GroupID] S&P500 prediction
 
-### Groups
-* 袁嵩皓, 107306085
-* 梁永強, 105701060
-* 林羿名, 107703007
-* 翁義甫, 107703041
+### Name
+Alexander Liang
 
 ### Goal
 A breif introduction about your project, i.e., what is your goal?
