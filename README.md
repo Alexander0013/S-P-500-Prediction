@@ -9,7 +9,7 @@
 ### Goal
 A breif introduction about your project, i.e., what is your goal?
 
-A: 透過LSTM的model預測S&P500的指數型基金VFINX的股價走勢，希望能藉此發展出能穩定獲利的交易策略
+A: Using LSTM model to predict Vanguard S&P 500 ETF price，in order to devlop a long-term profitable strategy
 
 ### Demo 
 You should provide an example commend to reproduce your result
@@ -34,9 +34,9 @@ Rscript code/your_script.R --input data/training --output results/performance.ts
       A:CSV
 * Any preprocessing? 
   * Handle missing data   
-      A:假如說股價有missing value就直接drop掉，然後用前一天的資料去補
+      A:If the stock price have missing value, we drop the value and use data from yesterday to fill the space.
   * Scale value  
-      A:做標準化，把資料縮在0~1之間
+      A:We use normalization on the data, keep the data in [0,1]
 
 ### code
 
@@ -53,13 +53,13 @@ Rscript code/your_script.R --input data/training --output results/performance.ts
   * precision, recall, R-square 
       A: RMSE/ R square/ RSE
 * Is your improvement significant? 
-      A:將訓練資料裡面切出validation的資料出來，讓模型做validation。
+      A:Cut out the validation data from the training data and let the model do validation
 * What is the challenge part of your project? 
-      A:1. 選擇預測模型 2. 找出有效的特徵值 3. 讓模型跑得更準
+      A:1. Choose the right model 2. Find valid eigenvalues 3. Make the model run more accurately
 
 ## References
 * Code/implementation which you include/reference (__You should indicate in your presentation if you use code for others. Otherwise, cheating will result in 0 score for final project.__)
 * Packages you use
-* Related publications
+
 
 
