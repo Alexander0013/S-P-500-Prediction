@@ -54,9 +54,5 @@ Rscript code/your_script.R --input data/training --output results/performance.ts
 * What is the challenge part of your project? 
       A:1. Choose the right model 2. Find valid eigenvalues 3. Make the model run more accurately
 
-## References
-* Code/implementation which you include/reference (__You should indicate in your presentation if you use code for others. Otherwise, cheating will result in 0 score for final project.__)
-* Packages you use
-
 
 
