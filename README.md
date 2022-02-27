@@ -8,21 +8,6 @@ A breif introduction about your project, i.e., what is your goal?
 
 A: Using LSTM model to predict Vanguard S&P 500 ETF price，in order to develop a long-term profitable strategy
 
-### Demo 
-You should provide an example commend to reproduce your result
-```R
-Rscript code/your_script.R --input data/training --output results/performance.tsv
-```
-* any on-line visualization
-
-## Folder organization and its related information
-
-### docs
-* Your presentation, 1091_datascience_FP_<yourID|groupName>.ppt/pptx/pdf, by **Jan. 12** 
-* Any related document for the final project
-  * papers
-  * software user guide
-
 ### data
 
 * Source : 
