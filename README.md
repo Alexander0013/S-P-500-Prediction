@@ -38,6 +38,7 @@ A: Using LSTM model to predict Vanguard S&P 500 ETF price，in order to develop 
       A:Cut out the validation data from the training data and let the model do validation
 * What is the challenge part of your project? 
       A:1. Choose the right model 2. Find valid eigenvalues 3. Make the model run more accurately
+![image](https://user-images.githubusercontent.com/71304414/155905239-c5b6a2e1-1751-46c3-b78a-282a4d77b553.png)
 
 
 
