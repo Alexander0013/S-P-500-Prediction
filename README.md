@@ -6,7 +6,7 @@ Alexander Liang
 ### Goal
 A breif introduction about your project, i.e., what is your goal?
 
-A: Using LSTM model to predict Vanguard S&P 500 ETF price，in order to devlop a long-term profitable strategy
+A: Using LSTM model to predict Vanguard S&P 500 ETF price，in order to develop a long-term profitable strategy
 
 ### Demo 
 You should provide an example commend to reproduce your result
